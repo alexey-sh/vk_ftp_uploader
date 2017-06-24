@@ -1,0 +1,19 @@
+.download-ftp-icon {
+    height: 0;
+    width: 0;
+    position: relative;
+    top: -28px;
+    left: 345px;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-top: 10px solid transparent;
+}
+.audio_row__current .download-ftp-icon {
+    left: 377px!important;
+}
+[data-full-id]:hover .download-ftp-icon {
+    border-top-color: #b6bdc9;
+}
+.download-ftp-icon:hover {
+    border-top-color: #a0a5b0!important;
+}
