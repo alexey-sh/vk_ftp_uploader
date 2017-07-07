@@ -2,7 +2,7 @@
 2. npm install
 3. setup ftp creds in config.json file
 4. node ./
-5. install extension
+5. install chrome extension
 6. ???
 7. PROFIT
 
@@ -19,5 +19,3 @@ Example of server/config.json
     "port": 9000
   }
 }
-
-*Note: server.port hardcoded in chrome extension at the moment
