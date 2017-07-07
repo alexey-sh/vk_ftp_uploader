@@ -7,6 +7,7 @@ var config = require('./config.json');
 
 var server = http.createServer(function(req, res) {
     if(req.url === '/favicon.ico') return res.statusCode = 404, res.end();
+    if (req.url === '/test') return res.end();
     console.log(req.method + ' ' + req.url);
     var data = '';
     req.on('data', function(chunk) {

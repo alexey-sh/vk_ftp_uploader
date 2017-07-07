@@ -1,0 +1,59 @@
+body {
+    width: 400px;
+    margin: 30px auto;
+    text-align: center;
+}
+.checkmark.hidden {
+    visibility: hidden;
+}
+.checkmark {
+    display:inline-block;
+    vertical-align: middle;
+    width: 22px;
+    height:22px;
+    background: #36ac3b;
+    border-radius:50%;
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
+}
+input {
+    padding: 3px 5px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 150px;
+}
+.checkmark:before{
+    content:"";
+    position: absolute;
+    width:3px;
+    height:9px;
+    background-color:#fff;
+    left:11px;
+    top:6px;
+}
+
+.checkmark:after{
+    content:"";
+    position: absolute;
+    width:3px;
+    height:3px;
+    background-color:#fff;
+    left:8px;
+    top:12px;
+}
+.checkmark.error:after {
+    width: 12px;
+    left: 5px;
+    top: 10px;
+}
+.checkmark.error:before {
+    width: 3px;
+    height: 12px;
+    left: 10px;
+    top: 5px;
+}
+.checkmark.error {
+    background: #ac423c;
+}
+

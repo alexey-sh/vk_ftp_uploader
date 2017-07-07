@@ -5,7 +5,7 @@ function loadAudioData(ids, cb) {
     http.open("POST", url, true);
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    http.onreadystatechange = function() {//Call a function when the state changes.
+    http.onreadystatechange = function() {
         if(http.readyState === 4 && http.status === 200) {
             var json = http.responseText.substring(http.responseText.indexOf('<!json>') + 7, http.responseText.indexOf('<!><!bool>'));
             cb(JSON.parse(json));
@@ -21,11 +21,7 @@ function attachDownloadIcon(node) {
         e.stopPropagation();
         loadAudioData(node.getAttribute('data-full-id'), function (data) {
             console.log(data);
-            loadAudio({url: data[0][2], audioName : data[0][3], bandName: data[0][4]}, function (error, audio) {
-                // if (!error) {
-                //     uploadAudioToFtp(audio);
-                // }
-            });
+            loadAudio({url: data[0][2], audioName : data[0][3], bandName: data[0][4]});
         });
     }, true);
     node.appendChild(el);
@@ -39,7 +35,6 @@ function observe() {
             if (mutation.type === 'childList' && mutation.addedNodes[0]) {
                 attachDownloadIcon(mutation.addedNodes[0]);
             }
-
         });
     });
     var config = { attributes: true, childList: true, characterData: false };
@@ -50,14 +45,13 @@ function loadAudio(data, cb) {
     chrome.runtime.sendMessage({
         method: 'POST',
         action: 'xhttp',
-        url: 'http://localhost:9000',
         data: data
     }, function(responseText) {
         console.log(responseText);
     });
 }
 
-setTimeout(observe, 1000);
+setTimeout(observe, 0);
 
 [].forEach.call(document.querySelectorAll('[data-full-id]'), function (el) {
     attachDownloadIcon(el);

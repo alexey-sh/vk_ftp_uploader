@@ -9,7 +9,7 @@
    "content_scripts": [ {
       "css": [ "content.css" ],
       "js": ["content.js" ],
-      "matches": [ "*://*/*" ]
+      "matches": [ "*://vk.com/*" ]
    } ],
    "content_security_policy": "script-src 'self' 'unsafe-eval' http://localhost; object-src 'self'",
 

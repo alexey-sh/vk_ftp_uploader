@@ -31,8 +31,16 @@ chrome.runtime.onMessage.addListener(function(request, sender, callback) {
         };
         console.log(typeof request.data);
         console.log(request.data);
-        xhttp.open(method, request.url, true);
-        xhttp.send(typeof request.data !== 'string' ? JSON.stringify(request.data) : request.data);
+        chrome.storage.sync.get('serverUrl', function (data) {
+            var url = data.serverUrl;
+            xhttp.open(method, url, true);
+            xhttp.send(typeof request.data !== 'string' ? JSON.stringify(request.data) : request.data);
+        });
         return true; // prevents the callback from being called too early on return
     }
+});
+
+chrome.pageAction.onClicked.addListener(function(tab) {
+    console.log('chrome.pageAction.onClicked');
+    chrome.tabs.create({'url': chrome.extension.getURL('settings.html'), 'selected': true});
 });
